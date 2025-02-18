@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Home Page</title> 
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        p {
+            color: white;
+            font-size: 70px;
+            text-shadow: 2px 2px #000;
+        }
+
+        /*.bigbox {
+            background-color: white;
+            font-size: 40px;
+            text-align: center;
+            height: 1000vh;
+            width: 100%;
+            background-position: center;
+            margin-top: 300px;
+        }*/
+
+        .taskbar {
+            background-color: white;
+            color: white;
+            height: 7vh;
+            width: 100%;
+            background-position: top;
+            text-align: center;
+            font-size: 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 1px solid black;
+        }
+
+        .Menu {
+            font-size: 17px;
+            top: 11px;
+            left: 10px;
+            position: fixed;
+        }
+
+        .Menu:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-content {
+            display: none;               
+            position: absolute;         
+            background-color: white;     
+            min-width: 160px;            
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); 
+            z-index: 1;                 
+            border-radius: 5px;     
+        }
+
+        .dropdown-content a {
+            color: black;            
+            padding: 10px 20px;       
+            text-decoration: none;      
+            display: block;             
+        }
+
+        .dropdown-content.active {
+            display: block; 
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1; 
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            margin-top: -10px;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .submenu a {
+            padding: 10px 20px;
+        }
+
+        .submenu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .submenu.show-submenu {
+            display: block;
+        }
+        .Account {
+            font-size: 17px;
+            top: 11px;
+            right: 10px;
+            position: fixed;
+        }
+
+        .Account:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-content2 {
+            display: none;               
+            position: absolute;         
+            background-color: white;     
+            min-width: 160px;            
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); 
+            z-index: 1;                 
+            border-radius: 5px;     
+        }
+
+        .dropdown-content2 a {
+            color: black;            
+            padding: 10px 20px;       
+            text-decoration: none;      
+            display: block;             
+        }
+
+        .dropdown-content2.active {
+            display: block; 
+        }
+
+        .dropdown-content2 a:hover {
+            background-color: #f1f1f1; 
+        }
+        .whole {
+            background-image: url(https://media.wizards.com/2024/images/daily/28c0611a3f.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 1000vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="whole">
+        <div class="bigbox"></div>
+        <div class="taskbar">
+            <div class="Menu">
+                <button onclick="openMenu()">Menu</button>
+                <div class="dropdown-content">
+                    <a href="#option1">Card Collection</a>
+                    <a href="#option2">Set</a>
+                    <a href="#option3">Deck</a>
+                    <a href = "#option4">Card Market</a>
+                    <div class="submenu-container">
+                        <a href="options" class="submenu-toggle" onclick="toggleSubmenu(event)">User</a>
+                        <div class="submenu">
+                            <a href="option3a">Wish List</a>
+                            <a href="option3b">Deck Owned</a>
+                        </div>
+                    </div>
+                    <!--<a href="#option5">Wish List</a>-->
+                </div>
+            </div>
+
+            <div class="Account">
+                <button onclick="openAccount()">Account</button>
+                <div class="dropdown-content2">
+                    <a href="#option1">User</a>
+                    <a href="#option2">Set</a>
+                    <a href="#option3">Deck</a></div>
+            </div>
+        </div>
+    </div>    
+
+    <script>
+        function openMenu() {
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.classList.toggle('active'); 
+        }
+        function toggleSubmenu(){
+            event.preventDefault();
+            const submenu = event.target.nextElementSibling;
+            submenu.classList.toggle('show-submenu');
+        }
+
+        window.addEventListener('click', 
+        function (event) {
+            const dropdown = document.querySelector('.dropdown-content');
+            const accountDropdown = document.querySelector('.dropdown-content2');
+            const menuButton = document.querySelector('.Menu button');
+            const accountButton = document.querySelector('.Account button');
+
+            if (!dropdown.contains(event.target) && event.target !== menuButton) {
+                dropdown.classList.remove('active');  
+            }
+            if (!accountDropdown.contains(event.target) && event.target !== accountButton) {
+                accountDropdown.classList.remove('active');}
+            //const submenus = document.querySelectorAll('.submenu');
+            //submenus.forEach(function (submenu) {
+                //if (!submenu.contains(event.target)) {
+                   // submenu.classList.remove('show-submenu');
+               // }
+           // });
+        });
+
+        function openAccount() {
+            const dropdown2 = document.querySelector('.dropdown-content2');
+            dropdown2.classList.toggle('active'); 
+        }
+        
+        
+            
+    </script>
+</body>
+</html>

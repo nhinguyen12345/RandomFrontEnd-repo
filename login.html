@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Login Page</title> 
+    <style>body{
+        text-align: center;
+    }
+    
+    p{
+        color: white;
+        font-size: 70px;
+        text-shadow: 2px 2px #000;
+    }
+    .centerbutton{
+        font-size: 40px;
+        padding: 15px;
+        padding-right: 75px;
+    }
+    .whole{
+        background-image: url(https://media.wizards.com/2024/images/daily/28c0611a3f.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 1000vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: absolute;
+    }
+        </style>
+</head>
+<body>
+<div class = "whole">
+    <p><b>Sign in</b></p>
+    <div class = "centerbutton">
+    <input type = "text" id = username placeholder = "Username"><div>
+    <input type = "text" id = password placeholder = "Password"></div>
+    <div>
+    <button onclick = "login()">Enter</button></div>
+    <button onclick = "redirectToRegister()">Don't Have an Account? Register</button></div>
+</div>    
+    <script>
+        function login(){
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === ""|| password ===""){
+                alert("Please enter both username and password");
+                return;
+            }
+            alert("Login Successful");
+
+            
+        }
+        
+        function redirectToRegister(){
+            alert("Redirecting to Register Page");
+            window.open("http://127.0.0.1:5500/register.html", "_blank");
+            return;
+            
+        }
+    </script>
+</body>
+</html>
